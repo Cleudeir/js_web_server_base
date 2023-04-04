@@ -7,7 +7,7 @@
     "start": "node ./build/index.js",
     "dev": "nodemon src/index.ts",
     "build": "sucrase ./src -d ./build --transforms typescript,imports",
-    "updateDep": "npx npm-check-updates -u"
+    "upDep": "npx npm-check-updates -u"
   },
   "keywords": [],
   "author": "",
