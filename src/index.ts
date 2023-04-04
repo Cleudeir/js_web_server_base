@@ -1,5 +1,3 @@
-import dotenv from "dotenv";
-dotenv.config();
 import Controller from "./class/Controller";
 import read from "./pages/read";
 import update from "./pages/update";

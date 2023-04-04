@@ -1,6 +1,4 @@
-import dotenv from 'dotenv';
 import { PathParams } from 'express-serve-static-core';
-dotenv.config();
 import Server from './Server';
 
 class Controller {

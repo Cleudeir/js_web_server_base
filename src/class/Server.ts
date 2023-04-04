@@ -1,8 +1,6 @@
 import express from 'express'
 import cors from 'cors'
-import dotenv from 'dotenv';
-dotenv.config();
-
+import environment from './environment';
 class Server {
     public express: express.Application
 
@@ -13,8 +11,8 @@ class Server {
     private middleware() {
         this.express.use(express.json())
         this.express.use(cors())
-        this.express.listen(process.env.PORT_EXPRESS || 3336, () => {
-            console.log(`initial => http://localhost:${process.env.PORT_EXPRESS || 3336}`)
+        this.express.listen(environment.get("PORT")|| 4000, () => {
+            console.log(`initial => http://localhost:${environment.get("PORT") || 4000}`)
         })
     }
 }

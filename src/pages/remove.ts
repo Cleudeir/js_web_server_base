@@ -1,5 +1,5 @@
-function remove(query:object) {
-    return ( query );
+function remove(query: object) {
+  return query;
 }
 
 export default remove;

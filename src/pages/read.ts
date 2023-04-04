@@ -1,5 +1,5 @@
-function read(query:object) {
-    return ( query );
+function read(query: object) {
+  return query;
 }
 
 export default read;
