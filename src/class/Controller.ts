@@ -7,7 +7,7 @@ class Controller {
         Server.get(_path , async (req, res) => {
             const query = req.query
             console.log(query)
-            const result = _function(query)
+            const result = await _function(query)
             res.send(result);
           }); 
     }
@@ -16,7 +16,7 @@ class Controller {
         Server.post(_path, async (req, res) => {
             const body = req.body
             console.log(body)
-            const result = _function(body)
+            const result = await _function(body)
             res.send(result);
           }); 
     }
@@ -26,7 +26,7 @@ class Controller {
             const query = req.query
             const body = req.body
             console.log(body, query)
-            const result = _function(query,body)
+            const result = await _function(query,body)
             res.send(result);
           }); 
     }
@@ -35,7 +35,7 @@ class Controller {
         Server.delete(_path, async (req, res) => {
             const query = req.query
             console.log(query)
-            const result = _function(query)
+            const result = await _function(query)
             res.send(result);
           }); 
     }
