@@ -1,17 +1,23 @@
 import Controller from "./class/Controller";
-import read from "./pages/read";
-import update from "./pages/update";
-import create from "./pages/create";
-import remove from "./pages/remove";
+import jsonwebtoken from "jsonwebtoken";
+import Environment from "./class/Environment";
+import { userController } from "./pages/user/user.controller";
+import { authenticateController } from "./pages/authenticate/autenticate.controller";
 
-Controller.get("/", () => {
-  return { status: "online" };
-});
+Controller.get(
+  "/",
+  () => {
+    const token = jsonwebtoken.sign(
+      { name: "copm" },
+      Environment.get("KEY_JWT"),
+      {
+        expiresIn: "7d",
+      }
+    );
+    return { token: token };
+  },
+  false
+);
 
-Controller.get("/read", read);
-
-Controller.post("/create", create);
-
-Controller.put("/update", update);
-
-Controller.remove("/remove", remove);
+userController("user", true);
+authenticateController("authenticate", false);
