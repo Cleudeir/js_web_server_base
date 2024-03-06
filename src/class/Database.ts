@@ -45,12 +45,8 @@ class Database {
         // Other model options go here
         sequelize: this.sequelize, // We need to pass the connection instance
         modelName: "User", // We need to choose the model name
- j                        mn80ommmmmmm~0oOutgoingMessage;/]
-]/
-]
-v //jpçj,f 54gr56tnucftx7 fngbo7  bmiop´- ~?
-    }
-0    );
+      }
+    );
 
     // the defined model is the class itself
     console.log(User === this.sequelize.models.User); // true
@@ -58,4 +54,3 @@ v //jpçj,f 54gr56tnucftx7 fngbo7  bmiop´- ~?
 }
 
 export default new Database();
-]Ã
