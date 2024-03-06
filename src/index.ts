@@ -3,6 +3,7 @@ import jsonwebtoken from "jsonwebtoken";
 import Environment from "./class/Environment";
 import { userController } from "./pages/user/user.controller";
 import { authenticateController } from "./pages/authenticate/autenticate.controller";
+import Database from "./class/Database";
 
 Controller.get(
   "/",
@@ -18,6 +19,8 @@ Controller.get(
   },
   false
 );
+
+Database;
 
 userController("user", true);
 authenticateController("authenticate", false);
