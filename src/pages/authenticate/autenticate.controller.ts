@@ -1,11 +1,11 @@
 import Controller from "../../class/Controller";
 import { authenticateService } from "./authenticate.service";
 
-export function authenticateController(
+export async function authenticateController(
   routeName: string,
   auth: boolean = true
 ) {
-  const { create, read, remove, update } = authenticateService();
+  const { create, read, remove, update } = await authenticateService();
 
   Controller.get("/" + routeName + "/read", read, auth);
   Controller.post("/" + routeName + "/create", create, auth);

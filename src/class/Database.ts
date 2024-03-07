@@ -1,16 +1,22 @@
-import { DataTypes, Model, Sequelize } from "sequelize";
+import { Model, ModelAttributes, ModelStatic, Sequelize } from "sequelize";
+
+type tableNames = "User" | "News";
+type models = {
+  [key in tableNames]: ModelStatic<Model<any, any>>;
+};
 
 class Database {
-  public sequelize: Sequelize | null;
+  public sequelize: Sequelize;
+  public models: models;
   constructor() {
-    this.sequelize = null;
-  }
-
-  public async connect() {
     this.sequelize = new Sequelize("database", "username", "password", {
       host: "localhost",
       dialect: "postgres",
     });
+    this.models = this.sequelize.models as models;
+  }
+
+  public async connect() {
     try {
       await this.sequelize.authenticate();
       console.log("Connection has been established successfully.");
@@ -25,36 +31,20 @@ class Database {
     }
   }
 
-  public async create() {
+  public async createTable(name: tableNames, options: ModelAttributes) {
     if (!this.sequelize) {
       console.error("Database connection not established.");
       return;
     }
-    class User extends Model {}
-
-    User.init(
-      {
-        firstName: {
-          type: DataTypes.STRING,
-          allowNull: false,
-        },
-        lastName: {
-          type: DataTypes.STRING,
-        },
-      },
-      {
-        sequelize: this.sequelize,
-        modelName: "User",
-      }
-    );
 
     try {
-      await this.sequelize.sync();
-      const user = this.sequelize.models.User;
-      await user.create({ firstName: "copm", lastName: "copm" });
-      console.log("User created successfully.", await user.findAll());
+      // Define the model
+      const model = this.sequelize.define(name, options, { timestamps: true });
+      await model.sync({ force: false });
+      console.log(`Model "${name}" created successfully.`);
+      return model;
     } catch (error) {
-      console.error("Error creating user:", error);
+      console.error("Error creating model:", error);
     }
   }
 }

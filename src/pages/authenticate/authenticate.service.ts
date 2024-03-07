@@ -1,4 +1,4 @@
-export function authenticateService() {
+export async function authenticateService() {
   function create(body: object, user: object | null) {
     return body;
   }

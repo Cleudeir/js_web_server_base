@@ -1,4 +1,6 @@
-export function userService() {
+import { userScheme } from "../../scheme/user.scheme";
+
+export async function userService() {
   function create(body: object, user: object | null) {
     return body;
   }

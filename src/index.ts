@@ -4,6 +4,19 @@ import Environment from "./class/Environment";
 import { userController } from "./pages/user/user.controller";
 import { authenticateController } from "./pages/authenticate/autenticate.controller";
 import Database from "./class/Database";
+import { userScheme } from "./scheme/user.scheme";
+
+(async () => {
+  //database
+  const { connect, models, sequelize } = Database;
+  await connect();
+  if (!sequelize) return;
+  await userScheme();
+  console.log(await models.User.findAll());
+  //constroller
+  await userController("user", true);
+  await authenticateController("authenticate", false);
+})();
 
 Controller.get(
   "/",
@@ -19,10 +32,3 @@ Controller.get(
   },
   false
 );
-(async () => {
-  await Database.connect();
-  await Database.create();
-})();
-
-userController("user", true);
-authenticateController("authenticate", false);
