@@ -7,7 +7,7 @@ import Database from "./class/Database";
 
 Controller.get(
   "/",
-  () => {
+  async () => {
     const token = jsonwebtoken.sign(
       { name: "copm" },
       Environment.get("KEY_JWT"),
@@ -19,8 +19,10 @@ Controller.get(
   },
   false
 );
-
-Database;
+(async () => {
+  await Database.connect();
+  await Database.create();
+})();
 
 userController("user", true);
 authenticateController("authenticate", false);
