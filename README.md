@@ -1,8 +1,7 @@
-
-                # Controller.ts                
-                ## project structure
-                ```                    
-                js_web_server_base/
+# js_web_server_base                
+## project structure
+```                    
+js_web_server_base/
     package-lock.json
     README.md
     tsconfig.json
@@ -27,8 +26,8 @@
             Database.ts
             Environment.ts
             Controller.ts                
-                ```
-                ## Projeto `project_name` - Sumário
+```
+## Projeto `project_name` - Sumário
 
 **Objetivo:** *(A ser preenchido pelo usuário)*
 
